@@ -1,0 +1,47 @@
+<html>
+    <header>
+        <title>Hangman Reloaded</title>
+    </header>
+    <body>
+        <h1>
+            <%= game_name %>
+        </h1>
+        <p>
+            Load game from file?
+        </p>
+        <form method="post" action="/load">
+            <input type="text" name="filename" placeholder="Saved game name"/>
+            <input type="submit" value="Load!"/>
+        </form>
+        <p>
+            <%= unguessed_word %>
+        </p>
+        <form method="post" action="/letter">
+            <input type="text" name="guess_letter" maxlength="1" size="1"/>
+            <input type="submit" value="Guess Letter!"/>
+        </form>
+        <p>
+            <%= "Guesses remaining: #{guesses_remaining}" %>
+        </p>
+        <form method="post" action="/solution">
+            <input type="text" name="guess_solution" placeholder="When you're ready..."/>
+            <input type="submit" value="Guess Solution!"/>
+        </form>
+        <p>
+            <%= "Hidden word: #{solution}" %>
+        </p>
+        <form method="get" action="/replay">
+            <input type="submit" value="Replay!"/>
+        </form>
+        <p>
+            Save your game?
+        </p>
+        <form method="post" action="/save">
+            <input type="text" name="filename" placeholder="Saved file name"/>
+            <input type="submit" value="Save!"/>
+        </form>
+        <p>
+            <%= "Game saved as #{filename}" if filename %>
+        </p>
+    </body>
+</html>
